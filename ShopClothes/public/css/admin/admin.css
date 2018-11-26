@@ -1,0 +1,110 @@
+*{margin: 0; padding: 0;}
+
+.clear-padding {
+    padding: 0!important;
+}
+
+input.cate-check {
+    margin-left: 5%;
+    height: 17px;
+    margin-top: 0.5%;
+}
+
+ul#cate-menu {
+    width: 92%;
+    margin-left: 4%;
+}
+
+.bad-post.form-group {
+    margin-top: 1%;
+}
+
+.bad-post.modal-content {
+    border: none;
+    padding: 0;
+}
+
+.bad-post.modal-header {
+    background-color: #0980b2;
+    border: none;
+    color: #fff;
+    text-align: center;
+}
+
+a.category-title {
+    color: #fff;
+}
+
+.portlet-body.admin-dashboard {
+    padding: 0!important;
+}
+
+i.fa.fa-chevron-down {
+    color: #fff;
+}
+
+@media (min-width: 992px)
+.page-content {
+    margin-left: 235px;
+    margin-top: 0;
+    min-height: 1000px!important;
+    padding: 25px 20px 10px;
+}
+
+label.control-label.col-md-2 {
+    text-align: left;
+}
+
+.col-md-3.col-xs-12 {position: relative;float: right; right: -3%;}
+
+.col-md-4.radio-choice {
+    margin-top: 8px;
+}
+
+div#datatable_paginate {
+    position: relative;
+    right: -25%;
+}
+
+div#image_preview,#logo_preview,#lincence_preview {width: 33%;padding: 1%; }
+img#image_preview,#logo_preview,#lincence_preview {max-height:75px;}
+
+.enterprise-post__image-picker.enterprise-post__center-center {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    font-size: 30px;
+    top: -23%;
+    right: -10px
+}
+
+input#avatar,#avatar_news,#avatar_logo,#avatar_lincence{
+    display: none;
+}
+button#remove_image {
+    color: #fff;
+    background-color: #000;
+    border: none;
+    position: absolute;
+    right: 5px;
+    border-radius: 50%!important;
+    width: 15%;
+    top: 4%;
+}
+
+#leftBarParent>a>img{
+    border-radius: 50%;
+    width: 40%;
+}
+
+.company-title{
+    padding-top:3%; 
+    font-size:162%; 
+    font-weight:bold; 
+    color:#ffffff;
+}
+#leftBarParent>a>hr{
+    width:90%; 
+    border:1.5px solid white; 
+    margin-left:5%
+}

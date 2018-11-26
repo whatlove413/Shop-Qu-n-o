@@ -1,0 +1,74 @@
+{
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 18,
+    // "editor.letterSpacing": 0.5,
+    "indenticator.showHover": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.fontWeight": "normal",
+    //"editor.fontWeight":,
+    //"prettier.eslintIntegration": true,
+    // this isn't really underline-thin but we hack it to be a thicker cursor
+    "editor.cursorBlinking": "solid",
+    // Very important: Install this plugin: https://github.com/be5invis/vscode-custom-css
+    // you'll need to change this to an absolute path on your computer
+    /*
+    "vscode_custom_css.imports": [
+        "/Volumes/Macintosh HD/Users/wesbos/.vscodestyles.css"
+    ],*/
+    "editor.renderWhitespace": "all",
+    // "workbench.colorTheme": "One Dark Pro",
+    "php.validate.enable": true,
+    "php.validate.run": "onSave",
+    //usr/local/opt/php70/bin/php
+    "php.validate.executablePath": "/usr/bin/php",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "material-icon-theme",
+    "jshint.options": {
+        "esversion": 6
+    },
+    "phpformatter.composer": false,
+    "phpformatter.phpPath": "/usr/bin/php",
+    "key": "shift+cmd+f",
+    "command": "format.standard",
+    "when": "editorTextFocus",
+    //php cs fixer
+    "php-cs-fixer.executablePath": "php-cs-fixer",
+    "php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
+    "php-cs-fixer.onsave": false,
+    "php-cs-fixer.rules": "@PSR2",
+    "php-cs-fixer.config": ".php_cs",
+    "php-cs-fixer.autoFixByBracket": true,
+    "php-cs-fixer.autoFixBySemicolon": false,
+    "php-cs-fixer.formatHtml": false,
+    "php-cs-fixer.documentFormattingProvider": true,
+    "php-cs-fixer.allowRisky": false,
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.trimAutoWhitespace": true,
+    "files.insertFinalNewline": false,
+    "files.trimFinalNewlines": false,
+    //code outline
+    "symbolOutline.doSort": false,
+    "symbolOutline.sortOrder": [
+        "Class",
+        "Module",
+        "Constant",
+        "Interface",
+        "*",
+        "Constructor",
+        "Function",
+        "Method"
+    ],
+    "symbolOutline.expandNodes": [
+        "Module",
+        "Class",
+        "Interface",
+        "Namespace",
+        "Object",
+        "Package",
+        "Struct"
+    ],
+    "symbolOutline.topLevel": [
+        "*"
+    ]
+}

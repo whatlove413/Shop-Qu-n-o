@@ -1,0 +1,33 @@
+.div-title-login{color:#786B6F;background-color:#EDEFEF;min-height:35px;line-height:35px;font-size:16px;font-weight:bold;}
+.div-title-2-login{color:#786B6F;background-color:#EDEFEF;min-height:35px;font-size:16px;margin-top:2%;padding-top:7px;padding-bottom:7px;border:solid 1px #CCD0D2;border-radius:8px;}
+.padding-top-2-login{padding-top:2%;}
+.padding-top-2-login__input-1{min-height:40px;font-size:17px;border-radius:8px;}
+.padding-top-2-login__input-2{min-height:40px;font-size:17px;margin-top:1%;border-radius:8px;border-radius:8px;}
+.padding-top-2-login__input-3{min-height:40px;font-size:17px;margin-top:1%;background-color:#6A9AE4;color:white;font-weight:bold;border-radius:8px;}
+.register-btn-login{text-align:center;min-height:40px;font-size:17px;margin-top:1%;background-color:#9B9B9B;color:white;font-weight:bold;border-radius:8px;}
+.register-btn-login:hover{text-decoration:none;color:#fff;}
+.div-title-2-active{color:#786B6F;background-color:#EDEFEF;min-height:35px;margin-top:2%;padding-top:7px;padding-bottom:7px;border:solid 1px #CCD0D2;font-size:30px;font-weight:bold;text-align:center;}
+.code-active{min-height:45px;font-size:20px;text-align:center;}
+.btn-active{min-height:50px;font-size:17px;margin-top:6%;background-color:#6A9AE4;color:white;font-weight:bold;}
+.btn-send-mail-active{min-height:50px;font-size:17px;margin-top:1%;background-color:#6A9AE4;color:white;font-weight:bold;}
+.padding-top-active{padding-top:3%;}
+.send-code-again-active{text-align:center;font-size:17px;padding-top:5px;}
+.div-title-register{color:#786B6F;background-color:#EDEFEF;min-height:35px;line-height:35px;font-size:16px;font-weight:bold;}
+.div-title-2-login{color:#786B6F;background-color:#EDEFEF;min-height:35px;font-size:16px;margin-top:2%;padding-top:7px;padding-bottom:7px;border:solid 1px #CCD0D2;}
+.padding-top-2-register{padding-top:1%;}
+.padding-top-2-register>form>label{padding-top:1%;}
+.padding-top-2-register__input-1{min-height:46px;font-size:17px;border-radius:8px;}
+.padding-top-2-register__input-2{min-height:46px;font-size:17px;border-radius:8px;}
+.padding-top-2-register__input-3{min-height:46px;font-size:17px;border-radius:8px;}
+.padding-top-2-register__input-4{min-height:46px;font-size:17px;margin-top:1%;background-color:#6A9AE4;color:white;font-weight:bold;margin-bottom:1%;border-radius:8px;}
+.check_requestment_register{padding-top:1%;}
+.accept-info-title{background-color:#FCFFC9;padding:0.8%;border-radius:8px;width:100%;}
+.btn-show-more{margin-top:1%;width:100%;border-radius:8px;}
+.btn-close{margin-top:1%;width:100%;border-radius:8px;background-color:#ccd0d2;}
+.collapse-info{padding-bottom:1%;}
+.panel-body{margin-top:1%;border:1px solid #ccd0d2;}
+#register_detail_images,
+#register_licence_images{display:none;}
+.register-error{margin-top:1%;font-size:17px;height:46px;padding:10px;margin-bottom:1%;border:1px solid transparent;border-radius:8px;}
+.register>div>a{text-decoration:none;color:#4499e3;font-weight:bold;margin-bottom:50%;}
+.register>span>a{text-decoration:none;color:#4499e3;font-weight:bold;margin-bottom:50%;cursor:pointer;}

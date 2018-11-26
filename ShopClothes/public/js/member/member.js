@@ -1,0 +1,1 @@
+if($("#msgAdmin").length>0){var $this=$("#msgAdmin");if($this.attr("type-msg")=="danger"){swal("",$this.val().replace("<br>",""),"warning");}else{swal("Thành công!",$this.val().replace("<br>",""),"success");}};$("#check_requestment").click(function(){if($(this).is(':checked')){$(this).val(1);}else{$(this).val(0);}});
