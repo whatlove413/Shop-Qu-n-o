@@ -21,7 +21,7 @@
                         <h4> Vui lòng nhập thông tin đăng ký </h4>
                         <div class="col-xs-12 col-sm-12 col-md-12 form_post">
                             <div class="form-group">
-                                <label for="user_fullname" class="control-label">Nhập tên họ tên cá nhân hoặc tên công ty <span class="required"> * </span></label>
+                                <label for="user_fullname" class="control-label">Nhập tên họ tên cá nhân<span class="required"> * </span></label>
                                 <input type="text" id="user_fullname" name="user_fullname" class="form-control" value="{{ old('user_fullname') }}" placeholder="Nhập họ tên đầy đủ"/>
                             </div>
                             <div class="form-group">
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group register">
                                 <input type="checkbox" id="check_requestment" name="check_requestment" value="0">
-                                <span> Tôi đồng ý với các @component('components.auth.requirement',["constant" => $constant])@endcomponent trên <a href="http://demo.sharingeconomy.vn">sharingeconomy.vn</a>
+                                <span> Tôi đồng ý với các @component('components.auth.requirement',["constant" => $constant])@endcomponent trên <a href="http://demo.sharingeconomy.vn">ShopClothes.vn</a>
                                 </span>
                                 <div class="col-xs-12 col-sm-12 col-md-12 clear-padding">Nếu bạn đã có tài khoản. <a href="{{ URL::route('web::index_member') }}">Đăng nhập</a> ngay để đăng tin miễn phí.</div>
                             </div>
