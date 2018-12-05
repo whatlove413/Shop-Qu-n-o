@@ -37,10 +37,8 @@
                                 <input type="password" id="user_password_confirm" name="user_password_confirm" class="form-control" placeholder="Nhập lại mật khẩu tối thiểu từ 6 ký tự trở lên"/>
                             </div>
                             <div class="form-group register">
-                                <input type="checkbox" id="check_requestment" name="check_requestment" value="0">
-                                <span> Tôi đồng ý với các @component('components.auth.requirement',["constant" => $constant])@endcomponent trên <a href="http://demo.sharingeconomy.vn">ShopClothes.vn</a>
-                                </span>
-                                <div class="col-xs-12 col-sm-12 col-md-12 clear-padding">Nếu bạn đã có tài khoản. <a href="{{ URL::route('web::index_member') }}">Đăng nhập</a> ngay để đăng tin miễn phí.</div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-12 clear-padding">Nếu bạn đã có tài khoản. <a href="{{ URL::route('web::index_member') }}">Đăng nhập</a> </div>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary nextBtn btn-lg pull-right btnRegister" type="submit" >Đăng ký</button>

@@ -146,13 +146,10 @@ class ProductController extends Controller
      * @return $response
      */
 
-    public function delete($id)
+    public function order(Request $request)
     {
-        $response = $this->service->delete($request, $id);
-        if ($response->fails()) {
-            return $response->errors()->first();
-        }
-        $data = $response->getData();
-        return $data;
+        $request = $request->all();
+        $res = $this->service->order($request);
+        return $res;
     }
 }

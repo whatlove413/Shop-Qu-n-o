@@ -9,6 +9,7 @@ use Services\Product\ProductService;
 class ProductController  extends Controller
 {
     private $paginate;
+    use \Core\Traits\Helpers;
     public function __construct(ProductService  $productService)
     {
         $this->service = $productService;
@@ -39,6 +40,16 @@ class ProductController  extends Controller
         //theo id
         $product = $this->service->detail($id);
         return view('web::deal.dealDetail', compact('product'));
+    }
+    public function order(Request $request)
+    {
+        //theo id
+        $res = $this->sendParamsToApi('POST',$request->all(),'api.local.com/v1/product/order');
+        $res = $res->getData()['data'];
+       if($res['STATUS'] == "OK"){
+           return redirect()->route('web::product',$request->all()['product_id'])->withSuccess($res['message']);
+       }
+       return redirect()->route('web::product',$request->all()['product_id'])->withErrors($res['message']);
     }
 
 }

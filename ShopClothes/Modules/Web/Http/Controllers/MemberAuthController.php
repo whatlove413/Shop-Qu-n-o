@@ -172,7 +172,7 @@ class MemberAuthController extends Controller
     }
 
             // Tiến hành thêm user
-    public function postRegister( Request $request )
+    public function postRegister( RegisterRequest $request )
     {
         $type = "register";
         $response = $this->service->createUser( $request->all() );
@@ -181,7 +181,7 @@ class MemberAuthController extends Controller
             return \Redirect::back()->withErrors( $response['message'] );
         }
         Auth::loginUsingId($response['data']['user_id']);
-        return route('web::index')->withSuccess( 'Đăng ký thành công!' );
+        return redirect()->route('web::index')->withSuccess( 'Đăng ký thành công!' );
     }
 
     // Trang góp ý

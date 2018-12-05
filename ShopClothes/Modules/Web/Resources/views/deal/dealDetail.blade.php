@@ -6,6 +6,8 @@
 @php
 $images = json_decode($product->deal_images);
 @endphp
+@include('includes.successes')
+@include('includes.errors')
 <div class="col-md-12 col-xs-12 clear-padding" style="padding-top: 2%;">
     <?php echo $constant['banner-mua-ban']->constant_content; ?>
 </div>
@@ -62,6 +64,39 @@ $images = json_decode($product->deal_images);
                     @endforeach
                 @endforeach
             </div>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Đặt hàng</button>
+            <div id="myModal" class="modal fade" role="dialog">
+     <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <form action="{{route('web::order')}}" method="post">
+       {{ csrf_field() }}
+
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Modal Header</h4>
+         </div>
+         <div class="modal-body">
+             <select name="size" id="size" class="form-control">
+                 @foreach($json as $color => $size)
+                    @foreach($size as $key => $quantity)
+                    <option value="{{$color.'#'.$key}}" class="">{{mb_strtoupper($color, 'UTF-8')}}--{{mb_strtoupper($key, 'UTF-8')}}</option >
+                    @endforeach
+                @endforeach
+                <input id="" type="hidden" name="product_id" value="{{$product['product_id']}}">
+                <input type="hidden" name="user_id" value="{{Auth::user() ?Auth::user()->user_id : null}}">
+                <input class="form-control" id="autocomplete" type="number" name="quantity" placeholder="Số lượng" value="">
+        </select>
+         </div>
+         <div class="modal-footer">
+         <button type="submit" class="btn btn-default" >Đặt hàng</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+         </div>
+       </div>
+</form>
+     </div>
+</div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h4 class="lienhe-detail">LIÊN HỆ</h4>
                 <p>Tên: Quốc Đại</p>

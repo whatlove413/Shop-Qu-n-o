@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="user_password" class="control-label">Password <span class="required"> * </span></label>
-                                <input type="user_password" id="user_password" name="user_password" class="form-control" value="{{ old('user_password') }}" placeholder="Nhập password"/>
+                                <input type="password" id="user_password" name="user_password" class="form-control" value="{{ old('user_password') }}" placeholder="Nhập password"/>
                             </div>
                             <div class="form-group login">
                                 <div class="col-xs-12 col-sm-12 col-md-12 clear-padding">

@@ -61,6 +61,9 @@ Route::group(['middleware' => 'custom', 'prefix' => '/v1/product', 'namespace' =
     Route::post('/create', [
         'uses' => 'ProductController@create',
     ]);
+    Route::post('/order', [
+        'uses' => 'ProductController@order',
+    ]);
 });
 
 

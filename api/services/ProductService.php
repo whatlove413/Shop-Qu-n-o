@@ -242,7 +242,55 @@ class ProductService
             return $result;
         }
     }
-
+    public function order($request){
+        $color = explode('#',$request['size'])[0];
+        $size = explode('#',$request['size'])[1];
+        $id = $request['product_id'];
+        $discount =0;
+        if($request['user_id']){
+            $discount = DB::table('tbl_user')->where('user_id',$request['user_id'])->first()->user_discount;
+        }
+        $product = DB::table('tbl_product')->where('product_id',$id)->first();
+        $product_quantity = json_decode($product->product_quantity);
+        DB::beginTransaction();
+        if((int) $request['quantity'] < 1){
+            return [
+                "message" => "Số lượng hàng đặt phải > 0",
+                "STATUS" => "ERRORS"
+            ];
+        }
+        foreach ($product_quantity as $key => $value) {
+            if($key == $color){
+                foreach ($value as $temp => $left) {
+                    if($value->$size == $value->$temp){
+                        if($value->$temp < $request['quantity'])
+                    {return [
+                        "message" => "Hàng không đủ",
+                        "STATUS" => "ERRORS"
+                    ];}
+                    else {
+                        ( $product_quantity->$key->$size = $product_quantity->$key->$size - (int) $request['quantity']) +4;
+                            $res =   DB::table('tbl_product')->where('product_id',$id)->update([
+                            'product_quantity' => json_encode($product_quantity)
+                        ]);
+                    }
+                    }
+                }
+            }
+        }
+        $price = ($product->product_price - ( $product->product_price*$discount/100))*$request['quantity'];
+        $billid = DB::table('tbl_bill_detail')->insertGetId([
+            'bill_detail_product_id' =>$id,
+            'bill_detail_bill_id'=> $request['user_id'],
+            'bill_detail_product_quantity' => $request['quantity'],
+            'bill_detail_value' => $price,
+        ]);
+        DB::commit();
+        return [
+            "message" => "Đặt hàng thành công, tổng tiền : ".$price." VNĐ"."\nMã đơn hàng : ".$billid,
+            "STATUS" => "OK",            
+        ];
+    }
     /**
      * @todo Validate
      * @author Hiển

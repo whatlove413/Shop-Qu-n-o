@@ -183,4 +183,8 @@ Route::group(['middleware' => 'custom', 'prefix' => 'san-pham', 'namespace' => '
         'as' => 'web::product',
         'uses' => 'ProductController@detail',
     ]);
+    Route::post('/order', [
+        'as' => 'web::order',
+        'uses' => 'ProductController@order',
+    ]);
 });
