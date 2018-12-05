@@ -1,0 +1,10 @@
+- Tên class:
+Viết hoa các chử đầu, RequestService, ....
+- Tên hàm / phương thức:
+Viết theo dạng camelcase (chử đầu viết thường), chử đầu tiên của từ kế tiếp viết hoa (editCargo, updateCargo)
+- Views:
+Viết theo cammelcase cho đặt tên folder & tên file. Extension: .blade.php
+- configs:
+Ở mỗi module --> có config riêng (nhất là phân trang, cấu hình...)
+Config tổng của toàn dự án --> config/constants.php
+- Dùng QueryBuilder và không dùng eloquent.

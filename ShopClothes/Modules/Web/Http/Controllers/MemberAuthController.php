@@ -10,7 +10,6 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Services\Member\MemberService;
-use Services\Deal\DealService;
 use Illuminate\Support\Facades\Input;
 
 use ServiceManager;
@@ -37,10 +36,9 @@ class MemberAuthController extends Controller
      *
      * @return void
      */
-    public function __construct(MemberService $memberService,DealService $dealService) {
+    public function __construct(MemberService $memberService) {
 
         $this->service = $memberService;
-        $this->dealService = $dealService;
     }
 
     //Trang login
@@ -64,37 +62,7 @@ class MemberAuthController extends Controller
         $keyword = Input::get('search_all');
         return view('web::member.searchAll',compact('keyword'));
     }
-    //Xác nhận user
-    public function verify(Request $request){
-        if($request->isMethod('Post')){
-            if($request->input('email_phone')!=null && $request->input('password')!=null && strpos($request->input('email_phone'), "@")==true){
-                if (Auth::attempt([
-                    'user_email' => $request->input('email_phone'),
-                    'user_password' => $request->input('password'),
-                    ])) {
-                    return Redirect::route('web::list_news');
-                }
-                else{
-                    return \Redirect::back()->withErrors( "Email hoặc password của bạn sai" );
-                }
-            }
-            elseif($request->input('email_phone')!=null && $request->input('password')!=null && ctype_digit($request->input('email_phone'))==true)
-            {
-                if (Auth::attempt([
-                    'user_mobile_phone' => $request->input('email_phone'),
-                    'user_password' => $request->input('password')
-                    ])) {
-                    return Redirect::route('web::list_news');
-                }
-                else{
-                        return \Redirect::back()->withErrors( "Số điện thoại hoặc password của bạn sai" );
-                    }
-            }
-            else {
-                return \Redirect::back()->withErrors( "Bạn đã nhập thiếu email/số điện thoại hoặc password" );
-            }
-        }
-    }
+
     //Đăng xuất
     public function logout()
     {
@@ -122,10 +90,6 @@ class MemberAuthController extends Controller
         return view('web::member.login');
     }
 
-            // Form Kích hoạt tài khoản view
-    public function active(){
-        return view('web::member.active');
-    }
 
     public function generateCode(Request $request)
     {
@@ -202,29 +166,22 @@ class MemberAuthController extends Controller
     public function register(){
         if ( Auth::check() && Auth::user()  )
         {
-            return redirect()->route('web::list_news');
+            return redirect()->route('web::index');
         }
         return view('web::member.register');
     }
 
             // Tiến hành thêm user
-    public function postRegister( RegisterRequest $request )
+    public function postRegister( Request $request )
     {
         $type = "register";
         $response = $this->service->createUser( $request->all() );
-        $user = $this->service->getInfoMemberByID($response)->getData();
-        if($user->user_mobile_phone != null)
+        if($response['STATUS']  == "ERRORS")
         {
-            $content = "Ma xac nhan cua ";
-            $code = " ".$user->user_active_code;
-            $this->sms->send($user->user_mobile_phone,$type,$content,$code);
+            return \Redirect::back()->withErrors( $response['message'] );
         }
-        if( !is_numeric($response) && $response->fails() )
-        {
-            return \Redirect::back()->withErrors( $response->errors() );
-        }
-        Auth::loginUsingId($response);
-        return view('web::member.active',compact('response','constant'))->withSuccess( 'Đăng ký thành công!' );
+        Auth::loginUsingId($response['data']['user_id']);
+        return route('web::index')->withSuccess( 'Đăng ký thành công!' );
     }
 
     // Trang góp ý
@@ -397,26 +354,14 @@ class MemberAuthController extends Controller
         return redirect()->route('web::list_news');
     }
 
-    public function checkConfirmCode(Request $request)
+    public function verify(Request $request)
     {
-        $user = $this->service->getInfoMemberForgetPass($request->user)->getData();
-        if($request->code != $user->user_active_code)
-        {
-            $response =  [
-                'message'       =>  "Mã xác nhận không chính xác",
-                'STATUS'        =>  'ERROR',
-                'status_code'   =>   500
-            ];
-            return $response;
+        $options = $request->all();
+        $res = $this->service->login($options);
+        if($res['STATUS'] == "ERRORS"){
+            return redirect()->back()->withErrors($res['message']);
         }
-        else
-        {
-            $response =  [
-                'message'       => "OK",
-                'STATUS'        =>  'OK',
-                'status_code'   =>  200
-            ];
-            return $response;
-        }
+        Auth::loginUsingId($res['user_id']);
+        return redirect()->route('web::index');
     }
 }

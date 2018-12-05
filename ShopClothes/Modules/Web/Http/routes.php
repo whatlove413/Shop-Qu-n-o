@@ -170,4 +170,17 @@ Route::group(['middleware' => 'member', 'prefix' => 'tai-khoan', 'namespace' => 
 } );
 
 
+Route::group(['middleware' => 'custom', 'prefix' => 'danh-muc', 'namespace' => 'Modules\Web\Http\Controllers'], function () {
+    Route::get('/', [
+        'as' => 'web::category',
+        'uses' => 'ProductController@list',
+    ]);
+});
 
+
+Route::group(['middleware' => 'custom', 'prefix' => 'san-pham', 'namespace' => 'Modules\Web\Http\Controllers'], function () {
+    Route::get('/{id}', [
+        'as' => 'web::product',
+        'uses' => 'ProductController@detail',
+    ]);
+});

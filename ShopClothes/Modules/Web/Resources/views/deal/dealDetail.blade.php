@@ -4,14 +4,12 @@
 @component('components.master.menuTop',["muaban" => true,"constant" => $constant])
 @endcomponent
 @php
-$images = json_decode($dealbyid->deal_images);
+$images = json_decode($product->deal_images);
 @endphp
 <div class="col-md-12 col-xs-12 clear-padding" style="padding-top: 2%;">
     <?php echo $constant['banner-mua-ban']->constant_content; ?>
 </div>
-<div class="block_post_news_transport">
-    @component('components.master.postNews',["href" => route('web::getDealPost') ])@endcomponent
-</div>
+
 <div class="col-sm-6 col-md-6 col-xs-12 package clear-padding transport-custom-left">
     <div class="header_home row clear_margin">
         <a href="{{ route('web::index_deal') }}"><h3><img src="{{ asset('img/icon/vanchuyennew.png') }}"> MUA BÁN</h3></a>
@@ -32,15 +30,9 @@ $images = json_decode($dealbyid->deal_images);
              </div>
          </div>
          <div class="col-md-6 detail">
-            <h4>{{mb_strtoupper($dealbyid->deal_name, 'UTF-8')}}</h4>
-            <p class="enterprise-detail__item-info"><img src="{{ asset('img/icon/gps.png') }}">{{ $dealbyid->deal_view_place }}</p>
-            <p class="enterprise-detail__item-info"><img src="{{ asset('img/icon/trongluongnew.png') }}">{{ number_format($dealbyid->deal_weight,1) }} tấn</p>
-            @if ($dealbyid->deal_price == 0)
-            <p class="enterprise-detail__item-info price"><img src="{{ asset('img/icon/gia.png') }}">Giá thỏa thuận</p>
-            @else
-            <p class="enterprise-detail__item-info price"><img src="{{ asset('img/icon/gia.png') }}">{{number_format($dealbyid->deal_price)}} VNĐ</p>
-            @endif
-            <!--  <p class="enterprise-detail__item-info hotline"><img src="{{ asset('img/icon/dienthoaido.png') }}"><span>Hotline:</span>{{$dealbyid->deal_phone}}</p> -->
+            <h4>{{mb_strtoupper($product['product_name'], 'UTF-8')}}</h4>
+            <p class="enterprise-detail__item-info price"><img src="{{ asset('img/icon/gia.png') }}">{{number_format($product['product_price'])}} VNĐ</p>
+             <p class="enterprise-detail__item-info hotline"><span>Thương hiệu:</span>{{strlen($product['product_brand_name']) > 0 ? $product['product_brand_name'] : "NO BRAND"}}</p>
         </div>
     </div>
     <div class="row clear_margin">
@@ -60,36 +52,31 @@ $images = json_decode($dealbyid->deal_images);
         <div class="row clear_margin">
             <div class="col-xs-12 col-sm-12 col-md-12 deal-note">
                 <h4>MÔ TẢ</h4>
-                <?php echo $dealbyid->deal_note ;?>
+                @php
+                    $json = json_decode($product['product_quantity']);
+                @endphp
+                @foreach($json as $color => $size)
+                    <p class="">Màu {{mb_strtoupper($color, 'UTF-8')}}</p>
+                    @foreach($size as $key => $quantity)
+                    <p class="">Size {{mb_strtoupper($key, 'UTF-8')}}: {{$quantity}} Cái</p>
+                    @endforeach
+                @endforeach
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h4 class="lienhe-detail">LIÊN HỆ</h4>
-                <p>Tên: {{$dealbyid->deal_contact_fullname}}</p>
-                <p>Số điện thoại: <a href="tel:{{$dealbyid->deal_phone}}">{{$dealbyid->deal_phone}}</a></p>
+                <p>Tên: Quốc Đại</p>
+                <p>Số điện thoại: <a href="tel:094.941.7778">094.941.7778</a></p>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h4>Chia sẻ</h4>
-                <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
                 <div class="addthis_inline_share_toolbox">
                 </div>
-                @component('components.auth.badPost',['bad_post_post_id'=>$dealbyid->deal_id,'bad_post_post_object'=>"MUA BÁN"])@endcomponent
             </div>
         </div>
     </div>
 </div>
 </div>
-@component('components.master.map', ["data" => $dealbyid,"exchange" => 5,"detail" => true])
-@endcomponent
-<div class="col-xs-12 news_relates">
-    <h3>TIN LIÊN QUAN</h3>
-</div>
 
-<div class="col-md-12 clear-padding enterprise-detail__related-news-card tinlquan-content">
-    <div class="col-sm-12 col-md-12 transport detail clear-padding">
-        @component('components.home.deal',['data'   =>  $deal,'news_relates' => true])
-        @endcomponent
-
-    </div>
-</div>
 </div>
 @endsection

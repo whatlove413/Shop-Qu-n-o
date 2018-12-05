@@ -21,12 +21,12 @@
                         <h4> Vui lòng nhập thông tin tài khoản để đăng nhập</h4>
                         <div class="col-xs-12 col-sm-12 col-md-12 form_post">
                             <div class="form-group">
-                                <label for="email_phone" class="control-label">Số điện thoại hoặc email <span class="required"> * </span></label>
-                                <input type="text" id="email_phone" name="email_phone" class="form-control" value="{{ old('email_phone') }}" placeholder="Nhập số điện thoại hoặc email"/>
+                                <label for="user_email_phone" class="control-label">Số điện thoại hoặc email <span class="required"> * </span></label>
+                                <input type="text" id="user_email_phone" name="user_email_phone" class="form-control" value="{{ old('user_email_phone') }}" placeholder="Nhập số điện thoại hoặc email"/>
                             </div>
                             <div class="form-group">
-                                <label for="password" class="control-label">Password <span class="required"> * </span></label>
-                                <input type="password" id="password" name="password" class="form-control" value="{{ old('password') }}" placeholder="Nhập password"/>
+                                <label for="user_password" class="control-label">Password <span class="required"> * </span></label>
+                                <input type="user_password" id="user_password" name="user_password" class="form-control" value="{{ old('user_password') }}" placeholder="Nhập password"/>
                             </div>
                             <div class="form-group login">
                                 <div class="col-xs-12 col-sm-12 col-md-12 clear-padding">

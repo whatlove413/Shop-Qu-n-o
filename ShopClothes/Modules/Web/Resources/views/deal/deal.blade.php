@@ -7,6 +7,6 @@
     @include('includes.home.slide')
 </div>
 <div class="clear-padding vehicle col-sm-12">
-	@include('includes.deal.deal')
+	@include('includes.deal.deal',["name"=>$name])
 </div>
 @endsection

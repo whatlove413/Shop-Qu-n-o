@@ -3,21 +3,18 @@
 namespace Modules\Web\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Services\Deal\DealService;
 
 class HomeController extends Controller
 {
     private $paginate;
 
-    public function __construct(DealService $dealService)
+    public function __construct()
     {
-        $this->dealService = $dealService;
     }
 
     public function index()
     {
         //lấy dữ liệu mua bán
-        $deal = $this->dealService->getDeal(['paginate' => $this->paginate['so-tin']]);
         return view('web::home.index', compact('deal'));
     }
 

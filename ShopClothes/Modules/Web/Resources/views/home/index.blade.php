@@ -2,7 +2,7 @@
 @section('content')
 <div class="home">
     <!-- Đây là menu top trên cùng của trang -->
-    @component('components.master.menuTop',["trangchu" => true])
+    @component('components.master.menuTop',["category" => $category])
     @endcomponent
     <div class="row clear_margin slider_home">
         @include('includes.home.slide')

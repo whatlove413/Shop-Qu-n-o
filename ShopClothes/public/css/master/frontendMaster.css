@@ -570,10 +570,10 @@ h3.header_service{}
 .sdt_tuvan h3{font-size: 18px;color:#0062c6;font-weight:800;}
 .tuvan{padding-right: 0;padding-left: 0;border-right:1px solid #8080802e;top:10px;}
 #triangle-bottomright{width:0;height:0;border-bottom:100px solid red;border-left:100px solid transparent;}
-.topnav{background-color:#0062c6;overflow:hidden;float:right;}
+.topnav{background-color:#0062c6;overflow:hidden;float:right;width: 100%;}
 .topnav a{height: 44px;float: left;display:block;color:#f2f2f2;text-align:center;padding: 13px 15px;text-decoration:none;font-size:17px;}
 .menu_active{box-shadow:0 0 20px rgba(0, 0, 0, 0.3);background-color:#111213;}
-.topnav a{transition:all ease 0.5s;border-right:1px solid #0c8dc4;font-size: 85%;font-weight:600;}
+.topnav a{transition:all ease 0.5s;border-right:1px solid #0c8dc4;font-size: 85%;font-weight:600;width: 15%;}
 .topnav a:not(.icon_nav_responsive):hover{box-shadow:0 0 20px rgba(0, 0, 0, 0.3);background-color:#111213;}
 .carousel-inner .active_menu{background-color:#4CAF50;color:white;}
 .topnav .icon_nav_responsive{display:none;}

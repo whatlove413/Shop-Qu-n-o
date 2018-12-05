@@ -17,16 +17,14 @@
             <div class="topnav" id="myTopnav">
                 <div href="#home" class="{{isset($trangchu) ? "border-bottom-black" : null}} triangle-bottomright"></div>
                 <a class="{{isset($trangchu) ? "menu_active" : null}} homepage_nav" href="{{ route('web::index') }}">TRANG CHỦ</a>
-                <a class="{{isset($vanchuyen) ? "menu_active" : null}}" href="">VẬN CHUYỂN</a>
-                <a class="{{isset($kho) ? "menu_active" : null}}" href="">KHO</a>
-                <a class="{{isset($muaban) ? "menu_active" : null}}" href="{{ route('web::index_deal') }}">MUA BÁN</a>
-                <a class="{{isset($dichvu) ? "menu_active" : null}}" href="">DỊCH VỤ</a>
-                <a class="{{isset($tuyendung) ? "menu_active" : null}}" href="">TUYỂN DỤNG</a>
-                <a class="{{isset($doanhnghiep) ? "menu_active" : null}}" href="">DOANH NGHIỆP</a>
+                @foreach($category as $cate)
+
+                @php
+                    $id = $cate['category_id'];
+                @endphp
+                <a class="{{isset($trangchu) ? "menu_active" : null}} homepage_nav" href="{{ route('web::category',['category_id' => $id]) }}">{{$cate['category_name']}}</a>
+                @endforeach
                 <a href="javascript:void(0);" class="icon_nav_responsive" onclick="myFunction()">&#9776;</a>
-                <form action="{{ URL::route('web::getSearchAll') }}" method="get">
-                    <input title="nhập từ khóa để tìm kiếm" type="text" name="search_all" id="search_all" class="form-control search_all" placeholder="Tìm"><button><i title="tìm kiếm" id="button_searchall" class="fa fa-search"></i></button>
-                </form>
             </div>
         </div>
     </div>
